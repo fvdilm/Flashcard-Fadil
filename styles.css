@@ -1,0 +1,495 @@
+/* styles.css */
+
+/* CSS untuk Sidebar dan Konten Utama */
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    background-color: #ffffff;
+}
+
+.sidebar.hidden + .main-content {
+    margin-left: 0; /* Konten utama menyesuaikan ketika sidebar disembunyikan */
+}
+
+
+/* Dark Mode Button */
+#darkModeBtn {
+    display: inline-block;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: #0d6efd;
+    transition: background-color 0.3s;
+}
+
+#darkModeBtn.dark-active {
+    background-color: #198754;
+}
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212; /* Warna gelap untuk latar belakang */
+    color: #e0e0e0; /* Warna teks terang */
+}
+
+body.dark-mode .main-content {
+    background-color: rgba(50, 50, 50, 0.8); /* Latar belakang transparan gelap */
+    color: #f5f5f5; /* Warna teks terang */
+}
+
+body.dark-mode .btn-custom {
+    background-color: #1e88e5; /* Biru lebih gelap */
+}
+
+body.dark-mode .btn-custom:hover {
+    background-color: #1565c0; /* Hover biru lebih gelap */
+}
+
+body.dark-mode .sidebar {
+    background-color: #1c1c1c; /* Sidebar gelap */
+    color: #e0e0e0; /* Warna teks sidebar */
+}
+
+body.dark-mode .sidebar a {
+    color: #e0e0e0; /* Teks sidebar */
+}
+
+body.dark-mode .sidebar a:hover, body.dark-mode .sidebar a.active {
+    background-color: #424242; /* Hover pada sidebar */
+}
+
+body.dark-mode .toggle-btn {
+    background-color: #424242; /* Tombol toggle gelap */
+}
+
+/* Flashcard Styles */
+.flashcard {
+    max-width: 350px;
+    height: 250px;
+    margin: 20px auto;
+    cursor: pointer;
+    perspective: 1000px;
+    position: relative;
+    user-select: none;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flashcard-front {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.flashcard-back {
+    background-color: #0d6efd;
+    color: #ffffff;
+    transform: rotateY(180deg);
+}
+
+.flashcard img {
+    max-width: 90%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+/* Toggle Button */
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    position: fixed; /* Tetap di posisi kiri */
+    height: 100vh;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Tombol Burger */
+.toggle-btn {
+    position: fixed; /* Tetap di posisi atas */
+    top: 20px;
+    left: 20px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001; /* Pastikan tombol berada di atas elemen lain */
+}
+
+/* Watermark di Sidebar */
+.sidebar .watermark {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+}
+/* Gaya untuk Halaman Home */
+
+/* Background untuk Halaman Home */
+body.home {
+    background-image: url('./images/background.jpg'); /* Path gambar */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Pusatkan secara vertikal */
+    justify-content: center; /* Pusatkan secara horizontal */
+    height: 100vh; /* Pastikan background memenuhi layar */
+    color: #000; /* Warna teks gelap */
+}
+
+/* Konten Utama */
+.home .main-content {
+    text-align: center;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8); /* Warna putih transparan */
+    padding: 20px 40px;
+    border-radius: 10px; /* Membuat sudut agak melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+}
+
+/* Judul */
+.home .main-content h1 {
+    font-size: 3rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ff6f61; /* Warna cerah */
+}
+
+/* Deskripsi */
+.home .main-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ff6f61; /* Warna cerah */
+}
+
+/* Tombol Link */
+.home .main-content a.btn-custom {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.home .main-content a.btn-custom:hover {
+    background-color: #0056b3;
+    color: white;
+    transform: scale(1.05); /* Efek memperbesar saat hover */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Tombol Burger */
+.toggle-btn {
+    position: fixed; /* Tetap di atas */
+    top: 20px;
+    left: 20px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001; /* Pastikan berada di atas elemen lainnya */
+}
+/* Penyesuaian Checkbox dan Label */
+.form-check {
+    display: flex;
+    align-items: center; /* Agar teks sejajar vertikal dengan checkbox */
+    gap: 5px; /* Jarak kecil antara checkbox dan teks */
+}
+
+.form-check label {
+    margin: 0; /* Hilangkan margin default pada label */
+    font-size: 1rem; /* Sesuaikan ukuran teks */
+}
+/* Kontainer untuk Input dan Tombol Submit */
+.submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Pusatkan secara horizontal */
+    justify-content: center; /* Pusatkan secara vertikal */
+    margin-top: 20px; /* Jarak dari atas */
+}
+
+/* Gaya Input */
+.submit-container #userAnswer {
+    width: 100%;
+    max-width: 400px; /* Batas maksimal lebar input */
+    margin-bottom: 10px; /* Jarak bawah dengan tombol */
+}
+
+/* Gaya Tombol Submit */
+.submit-container .btn-submit {
+    width: 100%;
+    max-width: 200px; /* Batas maksimal lebar tombol */
+    padding: 10px; /* Padding tombol */
+    text-align: center; /* Pusatkan teks dalam tombol */
+    font-size: 1rem; /* Ukuran teks tombol */
+    font-weight: bold; /* Tebalkan teks tombol */
+    border-radius: 5px; /* Sudut membulat */
+}
+.submit-container {
+    margin-bottom: 20px; /* Memberikan ruang di bawah tombol */
+}
+
+.score-info {
+    margin-top: 10px; /* Memberikan ruang dari elemen di atasnya */
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.flashcard-info {
+    font-size: 1rem;
+    color: #333;
+}
+/* Tombol "Mulai Belajar" di bagian bawah layar */
+.start-learning-bar {
+    position: fixed; /* Tetap di posisi bawah layar */
+    bottom: 0; /* Tetap berada di bawah */
+    left: 0; /* Rentangkan ke kiri */
+    width: 100%; /* Rentangkan ke seluruh lebar layar */
+    background-color: #f8f9fa; /* Warna latar belakang */
+    border-top: 1px solid #ddd; /* Garis horizontal pemisah */
+    text-align: center; /* Pusatkan tombol di tengah */
+    padding: 10px 0; /* Jarak atas dan bawah tombol */
+    z-index: 1000; /* Pastikan tombol di atas elemen lain */
+}
+
+.start-learning-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+/* Tambahkan ruang di bawah halaman untuk tombol "Tambah Flashcard" */
+.main-content {
+    padding-bottom: 100px; /* Ruang ekstra untuk menghindari tumpang tindih */
+}
+.flashcard {
+    word-break: break-all; /* Or break-word */
+  }
+  .flashcard {
+    width: 400px; /* Adjust the width as needed */
+  }
+/* CSS khusus untuk about.html */
+.about-page .main-content h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 3rem;
+    color: #007bff; /* Warna biru cerah */
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.about-page .main-content h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Paragraf */
+.about-page .main-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* List of Features */
+.about-page .features ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-page .features li {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-page .features li i {
+    color: #0d6efd; /* Biru cerah untuk ikon */
+    font-size: 1.5rem;
+}
+
+/* Add some animation to text */
+.about-page .main-content h1, .about-page .main-content p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+.about-page .main-content h1 {
+    animation-delay: 0.5s;
+}
+
+.about-page .main-content p {
+    animation-delay: 1s;
+}
+
+/* Keyframes for Animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-page .main-content {
+        padding: 20px;
+    }
+
+    .about-page .main-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-page .main-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .about-page .features li {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
